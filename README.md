@@ -6,7 +6,7 @@ A discord member fetcher self-bot using discord.js-selfbot-v13 from aiko-chan-ai
 ` npm install discord.js-selfbot-v13@latest `
 ` npm install csv-writer `
 
-First step is getting you authorization token by using developer tools.
+First step is getting your authorization token by using developer tools.
 You can do this by going to network tab in developer tools, to an xhr request, and find the "Authorization" header. Copy it and save it for later.
 
 Second step is getting the guild_id by using developer tools.
