@@ -17,7 +17,8 @@ client.on('ready', async () => {
         { id: 'username', title: 'Username' },
         { id: "globalName", title: 'Globalname'},
         { id: 'joinDate', title: 'Join Date' },
-        { id: 'createdAt', title: 'Account Created At' }
+        { id: 'createdAt', title: 'Account Created At' },
+        { id: 'roles', title: 'Roles' }
     ]
 });
 
@@ -25,17 +26,20 @@ const records = members.map(member => {
     const user = member.user;
     const joinDate = member.joinedAt ? member.joinedAt.toISOString().split('T')[0] : 'N/A';
     const createdAt = user.createdAt ? user.createdAt.toISOString().split('T')[0] : 'N/A';
+    const roles = member.roles.cache.map(role => role.name).join(', ');
     
 
     return {
         username: user.username,
         globalName: user.globalName,
         joinDate: joinDate,
-        createdAt: createdAt
+        createdAt: createdAt,
+        roles: roles
     };
 });
 
 await csvWriter.writeRecords(records);
+console.log("File exported to members.csv");
 
 }   catch(error){
     console.error("error ", error);
